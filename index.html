@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Encourager - Find Hope and Inspiration</title>
+    <style>
+        :root {
+            --primary: #4e89ae;
+            --secondary: #43658b;
+            --light: #ed6663;
+            --accent: #ffa372;
+            --background: #f5f5f5;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        /* Mobile Menu Button - Hidden by default */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/guillaume-de-germain-Yqtm6Fi8COM-unsplash.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            margin: 0 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Features Section */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--light);
+            bottom: 0;
+            left: 25%;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .feature-card {
+            flex-basis: calc(33.333% - 2rem);
+            margin: 1rem;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-img {
+            height: 200px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .feature-content {
+            padding: 1.5rem;
+        }
+        
+        .feature-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .testimonials .section-header h2 {
+            color: white;
+        }
+        
+        .testimonials .section-header h2::after {
+            background-color: var(--accent);
+        }
+        
+        .testimonial-slider {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-card {
+            flex: 0 0 100%;
+            padding: 2rem;
+            text-align: center;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin: 1rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+        }
+        
+        /* Daily Inspiration Section */
+        .daily-inspiration {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .daily-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .quote-author {
+            font-weight: 700;
+        }
+        
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-img {
+            height: 150px;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .resource-content {
+            padding: 1.5rem;
+        }
+        
+        .resource-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        /* Community Section */
+        .community-section {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .community-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .community-text {
+            flex-basis: 60%;
+            padding-right: 2rem;
+        }
+        
+        .community-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .community-form {
+            flex-basis: 40%;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-column {
+            flex-basis: calc(25% - 2rem);
+            margin: 1rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background-color: var(--light);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .feature-card {
+                flex-basis: calc(50% - 2rem);
+            }
+            
+            .community-text,
+            .community-form {
+                flex-basis: 100%;
+            }
+            
+            .community-text {
+                margin-bottom: 2rem;
+                padding-right: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Show mobile menu button only on smaller screens */
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .feature-card {
+                flex-basis: 100%;
+            }
+            
+            .footer-column {
+                flex-basis: calc(50% - 2rem);
+            }
+            
+            /* Hide regular nav and configure mobile nav */
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 1.5rem 0;
+            }
+        }
+            
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-column {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">THE <span>ENCOURAGER</span></div>
+            <div class="mobile-menu">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#daily-boost">Daily Boost</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#stories">Success Stories</a></li>
+                    <li><a href="about.html">Founder</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+    <style>
+        
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #4a6fa5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+        
+        .chat-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+        
+        .chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+        }
+        
+        .chat-header {
+            background-color: #4a6fa5;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .close-chat {
+            cursor: pointer;
+            font-size: 20px;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .message {
+            margin-bottom: 10px;
+            max-width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+            margin-right: auto;
+        }
+        
+        .user-message {
+            background-color: #dcebff;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .chat-input button {
+            margin-left: 10px;
+            padding: 10px 15px;
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .option-button {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            margin: 3px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .option-button:hover {
+            background-color: #3a5985;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            padding: 10px;
+        }
+        
+        .typing-indicator span {
+            height: 10px;
+            width: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 3px;
+            animation: bounce 1.3s linear infinite;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes bounce {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+
+
+ <!-- CHATBOT Section -->
+    <div class="chat-icon" id="chatIcon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z"/>
+        </svg>
+    </div>
+    
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div>Encouragement Bot</div>
+            <div class="close-chat" id="closeChat">×</div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be dynamically added here -->
+        </div>
+        
+        <div class="chat-input" id="chatInputArea">
+            <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Hope, Strength, and Encouragement</h1>
+                <p>When life gets tough, we're here to lift you up. Discover resources, community support, and daily inspiration to help you overcome challenges and find your inner strength.</p>
+                <div class="hero-buttons">
+                    <a href="#daily-boost" class="btn">Get Today's Boost</a>
+                    <a href="#community" class="btn btn-outline">Join Our Community</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="daily-boost" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>How We Can Help</h2>
+                <p>Everyone needs encouragement sometimes. We offer multiple ways to lift your spirits.</p>
+            </div>
+            
+            <div class="daily-inspiration">
+                <h3>Today's Inspiration</h3>
+                <p class="daily-quote">"The darkest hour has only sixty minutes." </p>
+                <p class="quote-author">— Morris Mandel</p>
+                <a href="#" class="btn">Get More Quotes</a>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-img">📝</div>
+                    <div class="feature-content">
+                        <h3>Daily Affirmations</h3>
+                        <p>Start your day with positive affirmations customized to your needs. Our daily affirmations help you maintain a positive mindset throughout your day.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-img">🧘</div>
+                    <div class="feature-content">
+                        <h3>Guided Meditations</h3>
+                        <p>Find peace and clarity through our collection of guided meditations designed to help you relax, reflect, and rejuvenate your spirits.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-img">📚</div>
+                    <div class="feature-content">
+                        <h3>Uplifting Articles</h3>
+                        <p>Explore our library of articles on resilience, personal growth, and overcoming adversity, written by experts and those who have walked similar paths.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-img">👥</div>
+                    <div class="feature-content">
+                        <h3>Support Communities</h3>
+                        <p>Connect with others who understand what you're going through in our moderated online communities, where compassion and encouragement flourish.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-img">🎯</div>
+                    <div class="feature-content">
+                        <h3>Goal Setting Tools</h3>
+                        <p>Create achievable goals and track your progress with our simple but powerful tools designed to help you move forward one step at a time.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-img">💌</div>
+                    <div class="feature-content">
+                        <h3>Personalized Messages</h3>
+                        <p>Receive customized words of encouragement delivered to your inbox when you need them most, tailored to your unique situation and challenges.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Read how The Encourager has helped others through difficult times.</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"After losing my job, I felt lost and directionless. The daily affirmations and supportive community here helped me regain my confidence. I'm now pursuing a new career path I'm truly passionate about."</p>
+                    <p class="testimonial-author">- Sarah K.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Helpful Resources</h2>
+                <p>Find tools and guidance to help you on your journey.</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-img">📋</div>
+                    <div class="resource-content">
+                        <h3>Self-Assessment Tools</h3>
+                        <p>Understand where you are and identify areas for growth with our thoughtful self-assessment resources.</p>
+                        <a href="#" class="btn">Explore</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">📱</div>
+                    <div class="resource-content">
+                        <h3>Wellness Apps</h3>
+                        <p>Discover apps that can support your mental and emotional wellbeing throughout your day.</p>
+                        <a href="#" class="btn">View List</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">📞</div>
+                    <div class="resource-content">
+                        <h3>Crisis Support</h3>
+                        <p>Find immediate help resources for when you're facing particularly difficult moments.</p>
+                        <a href="#" class="btn">Get Help Now</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">📃</div>
+                    <div class="resource-content">
+                        <h3>Worksheets & Exercises</h3>
+                        <p>Practical exercises and printable worksheets to help you process emotions and build resilience.</p>
+                        <a href="#" class="btn">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="section community-section">
+        <div class="container">
+            <div class="community-content">
+                <div class="community-text">
+                    <h2>Join Our Supportive Community</h2>
+                    <p>Connect with others who understand what you're going through. Share your journey, find encouragement, and help others along the way.</p>
+                    <p>Our community is a safe space where kindness and compassion are the guiding principles. Everyone deserves support and encouragement.</p>
+                    <a href="#" class="btn">Browse Community Forums</a>
+                </div>
+                
+                <div class="community-form">
+                    <h3>Sign Up for Daily Encouragement</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="area">Area of Interest</label>
+                            <select id="area">
+                                <option value="">Select an option</option>
+                                <option value="career">Career Challenges</option>
+                                <option value="relationships">Relationships</option>
+                                <option value="health">Health & Wellness</option>
+                                <option value="personal">Personal Growth</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Reach Out</h2>
+                <p>Have a question or suggestion? We'd love to hear from you.</p>
+            </div>
+            
+            <div class="community-form" style="max-width: 600px; margin: 0 auto;">
+                <form>
+                    <div class="form-group">
+                        <label for="contact-name">Your Name</label>
+                        <input type="text" id="contact-name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" id="contact-email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="5" placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>THE ENCOURAGER</h3>
+                    <p>Uplifting spirits and offering hope to those who need it most. We believe in the power of encouragement and the resilience of the human spirit.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">ig</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#daily-boost">Daily Boost</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#community">Community</a></li>
+                        <li><a href="#stories">Success Stories</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Meditation Guides</a></li>
+                        <li><a href="#">Self-Help Worksheets</a></li>
+                        <li><a href="#">Book Recommendations</a></li>
+                        <li><a href="#">Crisis Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: info@theencourager.com</li>
+                        <li>Phone: +2348115539776</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 The Encourager. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="chat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

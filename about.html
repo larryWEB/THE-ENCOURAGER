@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Founder - The Encourager</title>
+    <style>
+        :root {
+            --primary: #4e89ae;
+            --secondary: #43658b;
+            --light: #ed6663;
+            --accent: #ffa372;
+            --background: #f5f5f5;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        /* Page Title */
+        .page-title {
+            background-color: var(--secondary);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-title h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Founder Section */
+        .founder-section {
+            padding: 5rem 0;
+        }
+        
+        .founder-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .founder-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .founder-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .founder-content {
+            flex: 1.5;
+            min-width: 300px;
+        }
+        
+        .founder-content h2 {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .founder-content h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--light);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .founder-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .founder-quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--secondary);
+            padding: 1.5rem;
+            border-left: 4px solid var(--light);
+            margin: 2rem 0;
+        }
+        
+        /* Journey Section */
+        .journey-section {
+            background-color: white;
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--light);
+            bottom: 0;
+            left: 25%;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid var(--accent);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 5rem 0;
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .values-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .value-card {
+            flex-basis: calc(33.333% - 2rem);
+            min-width: 250px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .value-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            padding: 5rem 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-buttons {
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            margin: 0 10px 10px 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-column {
+            flex-basis: calc(25% - 2rem);
+            margin: 1rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background-color: var(--light);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+            
+            .mobile-menu {
+                display: block;
+                font-size: 1.5rem;
+                color: white;
+                cursor: pointer;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">THE <span>ENCOURAGER</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#daily-boost">Daily Boost</a></li>
+                    <li><a href="index.html#resources">Resources</a></li>
+                    <li><a href="index.html#community">Community</a></li>
+                    <li><a href="index.html#stories">Success Stories</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>About Our Founder</h1>
+            <p>The story behind The Encourager</p>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section">
+        <div class="container founder-container">
+            <div class="founder-image">
+                <img src="/images/found.jpg" alt="Omojay - Founder of The Encourager">
+            </div>
+            <div class="founder-content">
+                <h2>Meet Omojay</h2>
+                <p>Omojay is the visionary founder of The Encourager, a platform born from her personal experiences with life's challenges and her unwavering belief in the power of encouragement.</p>
+                
+                <p>Born and raised in Ilaro, a vibrant community in Ogun State, Nigeria, Omojay witnessed firsthand how words of encouragement and support could transform lives. Growing up in a close-knit community taught her the value of lifting others and the impact that a single voice of hope can have on someone struggling.</p>
+                
+                <p>Her academic journey led her to Bowen University, where she studied Agricultural Science. During her time at Bowen, she not only gained expertise in sustainable farming practices but also developed a deeper understanding of nurturing growth—both in plants and in people.</p>
+                
+                <div class="founder-quote">
+                    "Life has taught me that our greatest strength often emerges from our deepest struggles. Every word of encouragement is a seed planted that can grow into something beautiful in someone else's life."
+                </div>
+                
+                <p>After experiencing her own share of life's challenges and setbacks, Omojay found her purpose in pouring into others. She believes that everyone deserves to be uplifted, especially during their darkest moments, and has dedicated herself to creating spaces where encouragement flows freely.</p>
+                
+                <p>The Encourager is more than just a platform—it's Omojay's heartfelt response to a world that sometimes forgets the transformative power of kindness and encouragement. Her mission is to ensure that no one feels alone in their struggles and that everyone has access to the support and encouragement they need to keep moving forward.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section class="journey-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Omojay's Journey</h2>
+                <p>From personal challenges to purposeful mission</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Early Years in Ilaro</h3>
+                        <p>Growing up in Ilaro, Ogun State, Omojay observed how community support helped people overcome difficulties. These formative experiences planted the seeds for her future mission.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Education at Bowen University</h3>
+                        <p>Pursuing Agricultural Science at Bowen University, Omojay learned principles of growth and nurturing that would later inspire her approach to encouraging others.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Personal Challenges</h3>
+                        <p>Facing her own share of life's difficulties, Omojay discovered the transformative power of encouragement and support during dark times, which became the foundation for her mission.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Finding Purpose</h3>
+                        <p>Through overcoming personal struggles, Omojay realized her calling to pour into others whenever she had the opportunity, using her experiences to connect and uplift.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Founding The Encourager</h3>
+                        <p>Combining her passion for uplifting others with her experiences, Omojay created The Encourager as a platform dedicated to providing support and inspiration to those in need.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Growing the Community</h3>
+                        <p>Today, Omojay continues to expand The Encourager's reach, touching lives globally through various initiatives designed to spread hope and positivity to those who need it most.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Omojay's Core Values</h2>
+                <p>The principles that guide The Encourager's mission</p>
+            </div>
+            
+            <div class="values-container">
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
+                    <h3>Authentic Compassion</h3>
+                    <p>Omojay believes that true encouragement must come from a place of genuine care and understanding for others' struggles.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3>Growth Mindset</h3>
+                    <p>Drawing from her agricultural background, she sees every challenge as an opportunity for growth and transformation.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🤲</div>
+                    <h3>Generous Spirit</h3>
+                    <p>Freely giving encouragement and support to others without expectation of return is at the heart of Omojay's philosophy.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🔄</div>
+                    <h3>Resilience</h3>
+                    <p>Having faced her own challenges, Omojay embodies the resilience she hopes to inspire in others.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>Community Connection</h3>
+                    <p>She believes in the power of community to heal and support individuals through their darkest times.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">💬</div>
+                    <h3>Power of Words</h3>
+                    <p>Omojay understands that thoughtful words can change someone's outlook and potentially their life path.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Join Omojay's Mission</h2>
+                <p>Be part of a community dedicated to spreading encouragement and support to those who need it most. Together, we can create ripples of positivity that touch countless lives.</p>
+                <p>Whether you're seeking encouragement or want to help uplift others, The Encourager welcomes you with open arms. As Omojay often says, "We all have something to give, even if it's just a word of encouragement."</p>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn">Get Daily Encouragement</a>
+                    <a href="#" class="btn btn-outline">Join Our Community</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>THE ENCOURAGER</h3>
+                    <p>Uplifting spirits and offering hope to those who need it most. We believe in the power of encouragement and the resilience of the human spirit.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">ig</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#daily-boost">Daily Boost</a></li>
+                        <li><a href="index.html#resources">Resources</a></li>
+                        <li><a href="index.html#community">Community</a></li>
+                        <li><a href="index.html#stories">Success Stories</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Meditation Guides</a></li>
+                        <li><a href="#">Self-Help Worksheets</a></li>
+                        <li><a href="#">Book Recommendations</a></li>
+                        <li><a href="#">Crisis Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: info@theencourager.com</li>
+                        <li>Phone: +2348115539776</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 The Encourager. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
